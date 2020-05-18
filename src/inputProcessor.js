@@ -37,12 +37,14 @@ function getSource(svg, {css = 'inline'} = {}) {
 
   const source = new XMLSerializer().serializeToString(svg)
   const rect = svg.getBoundingClientRect()
+  const width = svg.width.baseVal.value
+  const height = svg.height.baseVal.value
 
   const result = {
     top: rect.top,
     left: rect.left,
-    width: svg.width.baseVal.value,
-    height: svg.height.baseVal.value,
+    width: typeof width !== 'undefined' ? width : rect.width,
+    height: typeof height !== 'undefined' ? height : rect.height,
     class: svg.getAttribute('class'),
     id: svg.getAttribute('id'),
     name: svg.getAttribute('name'),

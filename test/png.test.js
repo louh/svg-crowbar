@@ -9,6 +9,8 @@ test('pgn download requires source', () => {
 })
 
 test('download succeeds with empty SVG', () => {
+  const testsvg = createSVG()
+  console.log(testsvg.width.baseVal, testsvg.height.baseVal)
   expect(() => download(inputProcessor(createSVG()))).not.toThrow()
 })
 
